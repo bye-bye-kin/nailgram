@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   get '/users/:id', to: 'users#show', as: 'user'
 
-  resources :posts, only: %i(new create index) do
+  resources :posts, only: %i(new create index show destroy) do
     resources :photos, only: %i(create)
   end
   # onlyを使うと、自動で生成される7つのアクションのうちどのアクションのルーティングを追加するか絞り込むことができます。
