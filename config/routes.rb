@@ -12,4 +12,11 @@ Rails.application.routes.draw do
   get 'pages/arts' => "pages#index" 
   
   get '/users/:id', to: 'users#show', as: 'user'
+
+  resources :posts, only: %i(new create) do
+    resources :photos, only: %i(create)
+  end
+  # onlyを使うと、自動で生成される7つのアクションのうちどのアクションのルーティングを追加するか絞り込むことができます。
+
+  # またルーティングをネスト（入れ子）にすることで、親子関係をルーティングで表すことができます。photosに関してはpostsに対して「子」の関係になるので、ネストすることで、どの投稿に紐づくかを明示できます。
 end
