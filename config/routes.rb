@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :photos, only: %i(create)
   
     resources :likes, only: %i(create destroy)
+    resources :comments, only: %i(create destroy)
   end
   # onlyを使うと、自動で生成される7つのアクションのうちどのアクションのルーティングを追加するか絞り込むことができます。
 
