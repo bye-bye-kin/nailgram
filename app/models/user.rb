@@ -2,6 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts,dependent: :destroy
+  has_many :likes
+  # hasmanyは他のモデルとの間に１対多の関係であることを示す。反対側のモデルにはbelongs_toを記述する。
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 

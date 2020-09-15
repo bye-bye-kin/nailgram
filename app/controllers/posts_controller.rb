@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.photos.build
+    # Postモデルでaccepts_nested_attributes_forを描いたのでphotosも一緒に保存する
+    # https://qiita.com/suzy1031/items/289333d3e440fc470d7e
   end
 
   def create
@@ -22,6 +24,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.limit(10).includes(:photos,:user).order('created_at DESC')    
+    # ORMとActive Recordについて
+    # https://qiita.com/okamoto_ryo/items/54d6a3b5d879aeee5b39
   end
 
   def show
